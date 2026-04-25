@@ -1,0 +1,67 @@
+<?xml version="1.5" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 950" width="800" height="950">
+  <style>
+    .title { font-family: Arial; font-size: 18px; font-weight: bold; fill: #333; }
+    .subtitle { font-family: Arial; font-size: 14px; font-weight: bold; fill: #555; }
+    .formula { font-family: Times New Roman; font-size: 14px; fill: #333; font-style: italic; }
+    .desc { font-family: Arial; font-size: 11px; fill: #666; }
+    .var { font-family: Times New Roman; font-size: 13px; fill: #333; font-style: italic; }
+    .section { fill: #f0f0f0; stroke: #ccc; stroke-width: 1; }
+  </style>
+
+  <!-- 标题 -->
+  <text x="400" y="30" text-anchor="middle" class="title">系统涉及的数学模型与公式</text>
+
+  <!-- 1. 点云构建 -->
+  <rect x="30" y="50" width="740" height="120" class="section" rx="5"/>
+  <text x="50" y="75" class="subtitle">1. 点云构建（针孔相机模型）</text>
+  <text x="80" y="105" class="formula">X = (u - c_x) × depth / f_x</text>
+  <text x="350" y="105" class="formula">Y = (v - c_y) × depth / f_y</text>
+  <text x="550" y="105" class="formula">Z = depth</text>
+  <text x="80" y="135" class="desc">(u, v): 像素坐标 | (c_x, c_y): 主点 | f_x, f_y: 焦距</text>
+  <text x="80" y="155" class="desc">CameraInfo(fx, fy, cx, cy, width, height, scale)</text>
+
+  <!-- 2. 手眼标定 -->
+  <rect x="30" y="180" width="740" height="130" class="section" rx="5"/>
+  <text x="50" y="205" class="subtitle">2. 手眼标定（齐次坐标变换）</text>
+  <text x="80" y="235" class="formula">4×4 变换矩阵：T = [ R  t ]</text>
+  <text x="340" y="235" class="formula">[ 0  1 ]</text>
+  <text x="80" y="265" class="desc">R: 3×3 旋转矩阵 | t: 3×1 平移向量</text>
+  <text x="80" y="290" class="formula">四元数 → 旋转矩阵：R = R.from_quat([q_x, q_y, q_z, q_w]).as_matrix()</text>
+
+  <!-- 3. 坐标系变换 -->
+  <rect x="30" y="320" width="740" height="150" class="section" rx="5"/>
+  <text x="50" y="345" class="subtitle">3. 坐标系变换</text>
+  <text x="80" y="375" class="formula">base_T_camera = base_T_ee @ ee_T_camera</text>
+  <text x="400" y="375" class="desc">（ee_to_camera 方向）</text>
+  <text x="80" y="405" class="formula">base_t_grasp = base_R_camera @ cam_t_grasp + base_t_camera</text>
+  <text x="80" y="430" class="formula">base_R_grasp = base_R_camera @ cam_R_grasp</text>
+  <text x="80" y="455" class="desc">相机坐标 → 机器人基坐标的旋转和平移变换</text>
+
+  <!-- 4. 欧拉角 -->
+  <rect x="30" y="480" width="740" height="100" class="section" rx="5"/>
+  <text x="50" y="505" class="subtitle">4. 欧拉角表示</text>
+  <text x="80" y="535" class="formula">旋转矩阵 → 欧拉角：euler = R.from_matrix(R).as_euler("xyz")</text>
+  <text x="80" y="565" class="formula">欧拉角 → 旋转矩阵：R = R.from_euler("xyz", [r_x, r_y, r_z]).as_matrix()</text>
+
+  <!-- 5. 地面平面检测 -->
+  <rect x="30" y="590" width="740" height="130" class="section" rx="5"/>
+  <text x="50" y="615" class="subtitle">5. 地面平面检测（RANSAC）</text>
+  <text x="80" y="645" class="formula">平面方程：a·x + b·y + c·z + d = 0</text>
+  <text x="80" y="675" class="formula">点到平面距离：signed_dist = point @ plane_normal + offset</text>
+  <text x="80" y="705" class="desc">plane_cloud.segment_plane(distance_threshold, ransac_n=3, num_iterations=1000)</text>
+
+  <!-- 6. 连通域筛选 -->
+  <rect x="30" y="730" width="740" height="100" class="section" rx="5"/>
+  <text x="50" y="755" class="subtitle">6. 连通域筛选（中心距离）</text>
+  <text x="80" y="785" class="formula">center_dist² = (c_x - img_center_x)² + (c_y - img_center_y)²</text>
+  <text x="80" y="815" class="formula">score = dist² - area × 10⁻³</text>
+
+  <!-- 7. 单位转换 -->
+  <rect x="30" y="840" width="740" height="100" class="section" rx="5"/>
+  <text x="50" y="865" class="subtitle">7. Piper 单位转换</text>
+  <text x="80" y="895" class="formula">位置：x_μm = position_m × 1,000,000</text>
+  <text x="400" y="895" class="formula">角度：r_deg1000 = rpy_rad × 180/π × 1000</text>
+  <text x="80" y="920" class="formula">夹爪：width_μm = width_m × 1,000,000</text>
+
+</svg>

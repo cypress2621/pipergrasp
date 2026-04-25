@@ -1,0 +1,15 @@
+numpy==1.23.4
+scipy==1.10.1
+torch==2.4.1
+torchvision==0.19.1
+opencv-python==4.13.0.92
+Pillow
+open3d==0.19.0
+knn_pytorch==0.1
+ultralytics==8.4.37
+ultralytics-thop==2.0.18
+pyzed==5.1
+zed-msgs==5.1.1
+gradio
+requests
+matplotlib

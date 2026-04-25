@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 600" width="900" height="600">
+  <style>
+    .title { font-family: Arial; font-size: 18px; font-weight: bold; fill: #333; }
+    .module { font-family: Arial; font-size: 14px; fill: #333; }
+    .func { font-family: Arial; font-size: 11px; fill: #666; }
+    .arrow { stroke: #333; stroke-width: 1.5; fill: none; marker-end: url(#arrow); }
+    .label { font-family: Arial; font-size: 10px; fill: #555; }
+  </style>
+  <defs>
+    <marker id="arrow" markerWidth="8" markerHeight="8" refX="7" refY="3" orient="auto">
+      <path d="M0,0 L0,6 L7,3 z" fill="#333"/>
+    </marker>
+  </defs>
+
+  <!-- 标题 -->
+  <text x="450" y="35" text-anchor="middle" class="title">zed_piper_grasp.py 模块关系图</text>
+
+  <!-- ZED相机 -->
+  <rect x="80" y="100" width="160" height="80" fill="none" stroke="#333" stroke-width="1.5"/>
+  <text x="160" y="130" text-anchor="middle" class="module">ZED相机</text>
+  <text x="160" y="150" text-anchor="middle" class="func">capture_zed_frame()</text>
+  <text x="160" y="170" text-anchor="middle" class="func">RGB-D + 内参</text>
+
+  <!-- YOLO+SAM -->
+  <rect x="80" y="280" width="160" height="80" fill="none" stroke="#333" stroke-width="1.5"/>
+  <text x="160" y="310" text-anchor="middle" class="module">YOLO + SAM</text>
+  <text x="160" y="330" text-anchor="middle" class="func">目标检测/分割</text>
+  <text x="160" y="350" text-anchor="middle" class="func">select_yolo_mask()</text>
+
+  <!-- 点云处理 -->
+  <rect x="80" y="460" width="160" height="80" fill="none" stroke="#333" stroke-width="1.5"/>
+  <text x="160" y="490" text-anchor="middle" class="module">点云处理</text>
+  <text x="160" y="510" text-anchor="middle" class="func">build_end_points()</text>
+  <text x="160" y="530" text-anchor="middle" class="func">create_point_cloud()</text>
+
+  <!-- GraspNet -->
+  <rect x="370" y="220" width="160" height="80" fill="none" stroke="#333" stroke-width="1.5"/>
+  <text x="450" y="250" text-anchor="middle" class="module">GraspNet</text>
+  <text x="450" y="270" text-anchor="middle" class="func">infer_grasps()</text>
+  <text x="450" y="290" text-anchor="middle" class="func">抓取预测</text>
+
+  <!-- Piper机械臂 -->
+  <rect x="660" y="220" width="160" height="80" fill="none" stroke="#333" stroke-width="1.5"/>
+  <text x="740" y="250" text-anchor="middle" class="module">Piper机械臂</text>
+  <text x="740" y="270" text-anchor="middle" class="func">execute_topdown_pick()</text>
+  <text x="740" y="290" text-anchor="middle" class="func">抓取执行</text>
+
+  <!-- 手眼标定 -->
+  <rect x="370" y="420" width="160" height="70" fill="none" stroke="#333" stroke-width="1.5"/>
+  <text x="450" y="450" text-anchor="middle" class="module">手眼标定</text>
+  <text x="450" y="470" text-anchor="middle" class="func">坐标变换</text>
+  <text x="450" y="485" text-anchor="middle" class="func">base_T_camera</text>
+
+  <!-- 箭头和关系 -->
+
+  <!-- ZED → GraspNet -->
+  <line x1="240" y1="180" x2="370" y2="220" class="arrow"/>
+  <text x="290" y="195" class="label">点云数据</text>
+
+  <!-- YOLO+SAM → GraspNet -->
+  <line x1="240" y1="280" x2="370" y2="250" class="arrow"/>
+  <text x="290" y="260" class="label">语义掩码</text>
+
+  <!-- 点云处理 → GraspNet -->
+  <line x1="240" y1="460" x2="370" y2="290" class="arrow"/>
+  <text x="290" y="380" class="label">end_points</text>
+
+  <!-- GraspNet → Piper -->
+  <line x1="530" y1="260" x2="660" y2="260" class="arrow"/>
+  <text x="595" y="250" class="label">抓取位姿</text>
+
+  <!-- 手眼标定 → Piper -->
+  <line x1="450" y1="420" x2="740" y2="300" class="arrow"/>
+  <text x="580" y="380" class="label">base_T_camera</text>
+
+  <!-- GraspNet → 手眼标定 -->
+  <line x1="470" y1="300" x2="470" y2="420" class="arrow"/>
+  <text x="485" y="360" class="label">候选抓取</text>
+
+  <!-- 输入输出标注 -->
+  <text x="50" y="140" class="label">输入</text>
+  <line x1="20" y1="140" x2="80" y2="140" stroke="#333" stroke-width="1"/>
+
+  <text x="820" y="260" class="label">执行</text>
+  <line x1="820" y1="260" x2="860" y2="260" stroke="#333" stroke-width="1"/>
+
+</svg>

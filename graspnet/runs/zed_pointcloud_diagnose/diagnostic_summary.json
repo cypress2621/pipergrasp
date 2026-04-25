@@ -1,0 +1,91 @@
+{
+  "depth_summary": {
+    "image_height": 720,
+    "image_width": 1280,
+    "valid_depth_pixels": 829815,
+    "valid_depth_ratio": 0.9004069010416667,
+    "depth_min_m": 0.2104068100452423,
+    "depth_median_m": 0.388616144657135,
+    "depth_p95_m": 3.1697346448898314,
+    "depth_max_m": 5.779384136199951
+  },
+  "camera_cloud_full": {
+    "count": 829815,
+    "min_xyz_m": [
+      -0.948193299085252,
+      -2.3740748089649393,
+      0.2104068100452423
+    ],
+    "max_xyz_m": [
+      4.387693688451642,
+      0.2867032697152262,
+      5.779384136199951
+    ],
+    "mean_xyz_m": [
+      0.12373489720480764,
+      -0.14970291891741433,
+      0.7728438333576274
+    ]
+  },
+  "camera_cloud_depth_range": {
+    "count": 729775,
+    "min_xyz_m": [
+      -0.948193299085252,
+      -0.6085883716982664,
+      0.2104068100452423
+    ],
+    "max_xyz_m": [
+      0.4461122317418607,
+      0.14756831791112396,
+      1.1999683380126953
+    ],
+    "mean_xyz_m": [
+      -0.10876834009395045,
+      -0.03596829693080774,
+      0.4567263922285092
+    ]
+  },
+  "camera_cloud_masked": {
+    "count": 185098,
+    "min_xyz_m": [
+      -0.3184874982998954,
+      -0.13894246002228908,
+      0.21048715710639954
+    ],
+    "max_xyz_m": [
+      0.14167416811444453,
+      0.0889767057495839,
+      0.651878297328949
+    ],
+    "mean_xyz_m": [
+      -0.03481543971234525,
+      0.008075215467734131,
+      0.29952994909282277
+    ]
+  },
+  "files": {
+    "color_png": "runs/zed_pointcloud_diagnose/color.png",
+    "depth_npy": "runs/zed_pointcloud_diagnose/depth_m.npy",
+    "depth_vis_png": "runs/zed_pointcloud_diagnose/depth_vis.png",
+    "input_debug_png": "runs/zed_pointcloud_diagnose/input_debug.png",
+    "camera_intrinsics_json": "runs/zed_pointcloud_diagnose/camera_intrinsics.json",
+    "camera_cloud_full_ply": "runs/zed_pointcloud_diagnose/camera_cloud_full.ply",
+    "camera_cloud_depth_range_ply": "runs/zed_pointcloud_diagnose/camera_cloud_depth_range.ply",
+    "camera_cloud_masked_ply": "runs/zed_pointcloud_diagnose/camera_cloud_masked.ply"
+  },
+  "mask": {
+    "depth_range_pixels": 729775,
+    "depth_range_ratio": 0.7918565538194444,
+    "selected_pixels": 185098,
+    "selected_ratio": 0.2008441840277778,
+    "min_depth_m": 0.15,
+    "max_depth_m": 1.2,
+    "center_crop_ratio": 0.45,
+    "roi": [
+      0.0,
+      1.0,
+      0.0,
+      1.0
+    ]
+  }
+}

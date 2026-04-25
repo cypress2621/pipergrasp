@@ -1,0 +1,70 @@
+{
+  "depth_summary": {
+    "image_height": 720,
+    "image_width": 1280,
+    "valid_depth_pixels": 882129,
+    "valid_depth_ratio": 0.9571712239583333,
+    "depth_min_m": 0.2531915009021759,
+    "depth_median_m": 0.3750157952308655,
+    "depth_p95_m": 2.5225004673004148,
+    "depth_max_m": 4.586690425872803
+  },
+  "camera_cloud_full": {
+    "count": 882129,
+    "min_xyz_m": [
+      -0.9437013200088362,
+      -2.027938506586711,
+      0.2531915009021759
+    ],
+    "max_xyz_m": [
+      2.1464700818880744,
+      0.15063910831761118,
+      4.586690425872803
+    ],
+    "mean_xyz_m": [
+      0.023658171823064348,
+      -0.10183612389725351,
+      0.6242002307414675
+    ]
+  },
+  "camera_cloud_masked": {
+    "count": 186192,
+    "min_xyz_m": [
+      -0.31825122876557393,
+      -0.13888316495895528,
+      0.29846683144569397
+    ],
+    "max_xyz_m": [
+      0.21680956718652156,
+      0.08875861437180445,
+      0.6509084701538086
+    ],
+    "mean_xyz_m": [
+      -0.028664568281705497,
+      0.007212989186184665,
+      0.3878153506586391
+    ]
+  },
+  "files": {
+    "color_png": "runs/zed_pointcloud_diagnose_neural/color.png",
+    "depth_npy": "runs/zed_pointcloud_diagnose_neural/depth_m.npy",
+    "depth_vis_png": "runs/zed_pointcloud_diagnose_neural/depth_vis.png",
+    "input_debug_png": "runs/zed_pointcloud_diagnose_neural/input_debug.png",
+    "camera_intrinsics_json": "runs/zed_pointcloud_diagnose_neural/camera_intrinsics.json",
+    "camera_cloud_full_ply": "runs/zed_pointcloud_diagnose_neural/camera_cloud_full.ply",
+    "camera_cloud_masked_ply": "runs/zed_pointcloud_diagnose_neural/camera_cloud_masked.ply"
+  },
+  "mask": {
+    "selected_pixels": 186192,
+    "selected_ratio": 0.20203125,
+    "min_depth_m": 0.15,
+    "max_depth_m": 1.2,
+    "center_crop_ratio": 0.45,
+    "roi": [
+      0.0,
+      1.0,
+      0.0,
+      1.0
+    ]
+  }
+}
